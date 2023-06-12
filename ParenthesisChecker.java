@@ -11,6 +11,9 @@ public class ParenthesisChecker {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+
+        System.out.print("\n");
+
         int N = scanner.nextInt();
         scanner.nextLine(); // Consume the newline character after reading N
 
@@ -20,8 +23,10 @@ public class ParenthesisChecker {
             String parentheses = scanner.nextLine();
             if (isBalanced(parentheses)) {
                 System.out.println(formatResult(parentheses, ANSI_GREEN + "BALANCED" + ANSI_RESET));
+                System.out.print("\n");
             } else {
                 System.out.println(formatResult(parentheses, ANSI_RED + "NOT BALANCED" + ANSI_RESET));
+                System.out.print("\n");
             }
         }
     }
@@ -42,7 +47,14 @@ public class ParenthesisChecker {
                 }
             }
         }
-
+        
         return stack.isEmpty();
     }
+
+    private static String formatResult(String parentheses, String result) {
+        StringBuilder builder = new StringBuilder();
+        builder.append("==> ").append(parentheses).append(" : ").append(result);
+        return builder.toString();
+    }
+
 }
